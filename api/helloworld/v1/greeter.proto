@@ -17,6 +17,12 @@ service Greeter {
       get: "/helloworld/{name}"
     };
   }
+	// receive message from other project
+  rpc ReceiveMessage (ReceiveRequest) returns (ReceiveReply) {
+		option (google.api.http) = {
+      get: "/receive/message"
+    };
+	}
 }
 
 // The request message containing the user's name.
@@ -27,4 +33,12 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
+}
+
+message ReceiveRequest {
+	string message = 1;
+}
+
+message ReceiveReply {
+	string message = 1;
 }
